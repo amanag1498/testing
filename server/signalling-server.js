@@ -249,9 +249,9 @@ socket.on("blockUser", (config) => {
 		if (hostIDs[channel] === socket.id) {
 			const db = mysql.createConnection({
 				host: '31.170.161.103', // Replace with your host
-				user: 'u373538896_admin', // Replace with your database user
+				user: 'u373538896_gd', // Replace with your database user
 				password: 'T389mqzh8p@123', // Replace with your password
-				database: 'u373538896_gdlive' // Replace with your database name
+				database: 'u373538896_gd' // Replace with your database name
 			  });
 			db.connect((err) => {
 				if (err) throw err;
