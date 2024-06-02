@@ -188,6 +188,7 @@ socket.on("blockUser", (config) => {
 		};
 		/// New code
 
+	
 		    // Check if user is blocked from the channel
 			if (blockIds[channel] && blockIds[channel].has(config.userData.user_id)) {
 				console.log(`[${socket.id}] is blocked from joining channel ${channel}`);
@@ -200,6 +201,8 @@ socket.on("blockUser", (config) => {
 			socket.emit("videoSharingPeersUpdate", videoSharingPeers[channel]);
 		}
 		console.log("[" + socket.id + "] join - connected peers grouped by channel", util.inspect(peers, options));
+                	const usersInChannel = Object.values(peers[channel]).map(peer => peer.userData);
+                        socket.emit("usersInChannel", { users: usersInChannel });
 
 		for (const id in channels[channel]) {
 			channels[channel][id].emit("addPeer", {
