@@ -132,7 +132,19 @@ socket.on("blockUser", (config) => {
 		// 	gift_url:gift_url
 		// });
 	});
-
+socket.on("entryReceived", (config) => {
+		const channel = socketHostName +config.channel;
+		
+		const entry_url = config.entry_url;
+		// Notify all users in the channel
+		for (const id in channels[channel]) {
+		
+			channels[channel][id].emit("entryReceivedByUser", {
+				entry_url:entry_url
+			});
+		}
+		
+	});
 
 	socket.on("hostRemovesVideoShare", (config) => {
 		const channel = socketHostName +config.channel;
