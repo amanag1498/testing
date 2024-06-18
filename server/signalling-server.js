@@ -28,7 +28,7 @@ const blockIds ={};
 
 const signallingServer = (socket) => {
 	const socketHostName = socket.handshake.headers.host.split(":")[0];
-
+ 
 	socket.channels = {};
 	sockets[socket.id] = socket;
 
@@ -134,8 +134,10 @@ socket.on("blockUser", (config) => {
 	});
 socket.on("entryReceived", (config) => {
 		const channel = socketHostName +config.channel;
-		
+
+	
 		const entry_url = config.entry_url;
+	console.log(config.entry_url);
 		// Notify all users in the channel
 		for (const id in channels[channel]) {
 		
