@@ -137,14 +137,16 @@ socket.on("entryReceived", (config) => {
 
 	
 		const entry_url = config.entry_url;
-	console.log(config.entry_url);
+	        console.log(config.entry_url);
 		// Notify all users in the channel
 		for (const id in channels[channel]) {
-		
-			channels[channel][id].emit("entryReceivedByUser", {
-				entry_url:entry_url
+		channels[channel][id].emit("entryReceivedByUser", {
+				entry_url:entry_url,
 			});
 		}
+	 socket.emit("entryReceivedByUser", {
+		 	entry_url:entry_url,
+ });
 		
 	});
 
